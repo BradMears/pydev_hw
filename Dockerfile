@@ -3,6 +3,9 @@ FROM bradmears/pydev:latest
 ENV TZ=US \
     DEBIAN_FRONTEND=noninteractive
 
+###
+### FT232H
+###    
 RUN apk update && \
 apk upgrade && \
 apk add \
@@ -20,10 +23,15 @@ RUN python3 -m venv /usr/local/home/venv/Blinka && \
     pip3 install pyftdi Adafruit-Blinka && \
     deactivate
 
-WORKDIR /usr/local/home/
-COPY bashrc.pydev_hw /usr/local/home/
-RUN cat bashrc.pydev_hw >> bashrc && \
-    rm bashrc.pydev_hw
+###
+### ESP32
+###    
+
+
+
+###
+### Rigol O-scope screen grab utility
+###
 
 # Man, installing this screen grab utility for the Rigol is a lot of work for something
 # I rarely use.
@@ -36,5 +44,13 @@ RUN cat bashrc.pydev_hw >> bashrc && \
 #    pipenv install && \    
 #    echo "Done installing rigol-grab"
 #COPY rigol-grab.sh /app
+
+###
+### Container setup
+###
+WORKDIR /usr/local/home/
+COPY bashrc.pydev_hw /usr/local/home/
+RUN cat bashrc.pydev_hw >> bashrc && \
+    rm bashrc.pydev_hw
 
 CMD ["/bin/bash"]
