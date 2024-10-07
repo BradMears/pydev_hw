@@ -1,0 +1,7 @@
+*zip
+*.tar.gz
+lj_error.txt
+setup.sh
+rigol-grab.sh
+INSTALL.md
+*.png

@@ -1,0 +1,6 @@
+# bashrc contents specific tp pydev_hw
+
+function ft232h() {
+    source /usr/local/home/venv/Blinka/bin/activate
+    export BLINKA_FT232H=1
+}
