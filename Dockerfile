@@ -1,23 +1,17 @@
 FROM bradmears/pydev:latest
 
-ENV TZ=US \
-    DEBIAN_FRONTEND=noninteractive
-
 ###
 ### FT232H
-###    
-RUN apk update && \
-apk upgrade && \
-apk add \
-    py3-pip \
-    python3-dev \
-    gcc \
-    musl-dev \
-    libusb
+###  
+RUN apt update && \
+    apt upgrade -y && \
+    apt install -y \
+        python3-venv \
+        libusb-dev
 
 # Install the Adafruit Blinka library so I can use the FT232H.
-# This has to be installed with pip and best-practice with pip in Alpine
-# is to install it in a virtual environment
+# This has to be installed with pip and to avoid polluting the
+# global library space, I install it in a virtual environment
 RUN python3 -m venv /usr/local/home/venv/Blinka && \
     . /usr/local/home/venv/Blinka/bin/activate &&  \
     pip3 install pyftdi Adafruit-Blinka && \

@@ -1,6 +1,6 @@
 
 #
-# bashrc contents specific tp pydev_hw
+# bashrc contents specific to pydev_hw
 #
 
 function use-ft232h() {
