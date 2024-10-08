@@ -7,3 +7,7 @@ function use-ft232h() {
     source /usr/local/home/venv/Blinka/bin/activate
     export BLINKA_FT232H=1
 }
+
+function use-labjack() {
+    source /usr/local/home/venv/LabJack/bin/activate
+}
