@@ -28,13 +28,13 @@ RUN python3 -m venv /usr/local/home/venv/LabJack && \
     deactivate
 
 RUN mkdir /app
+COPY examples /app/examples
 
-# The filename of the .zip file will change when the version updates and I 
-# download a new one. So use a wildcard to grab what should be exactly one 
-# matching file.
-COPY labjack_src/LabJack-LJM_*.zip /app
-COPY labjack_src/list_connections.py /app
+# Unpack the Intel Linux distro . These lines are different in the raspberry-pi branch.
+COPY LabJack-LJM_2024-06-10.zip /app
 WORKDIR /app
+
+# Install the LabJack SW and then immediately delete Kipling
 RUN unzip *.zip && \
     ./labjack_ljm_installer.run -- --no-restart-device-rules && \
     rm /app/LabJack-LJM_*.zip && \
