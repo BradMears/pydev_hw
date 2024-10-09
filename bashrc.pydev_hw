@@ -11,3 +11,7 @@ function use-ft232h() {
 function use-labjack() {
     source /usr/local/home/venv/LabJack/bin/activate
 }
+
+echo
+echo "Special hardware interfaces can be accessed by using the following bash function(s):"
+declare -f | grep use-
