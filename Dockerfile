@@ -14,7 +14,7 @@ RUN apt update && \
 # Install the Adafruit Blinka library so I can use the FT232H.
 # This has to be installed with pip and to avoid polluting the
 # global library space, I install it in a virtual environment
-RUN python3 -m venv /usr/local/home/venv/Blinka && \
+RUN python3 -m venv --system-site-packages /usr/local/home/venv/Blinka && \
     . /usr/local/home/venv/Blinka/bin/activate &&  \
     pip3 install pyftdi Adafruit-Blinka && \
     deactivate
@@ -22,7 +22,7 @@ RUN python3 -m venv /usr/local/home/venv/Blinka && \
 ###
 ### LabJack
 ###
-RUN python3 -m venv /usr/local/home/venv/LabJack && \
+RUN python3 -m venv --system-site-packages /usr/local/home/venv/LabJack && \
     . /usr/local/home/venv/LabJack/bin/activate &&  \
     pip3 install --no-cache-dir labjack-ljm==1.21.0 && \
     deactivate
