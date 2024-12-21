@@ -47,20 +47,20 @@ RUN unzip *.zip && \
 
 
 ###
-### Rigol O-scope screen grab utility
+### Rigol O-scope screen grab utilities
 ###
 
-# Man, installing this screen grab utility for the Rigol is a lot of work for something
-# I rarely use.
-# And now I found that it requires python 3.7. Newer versions won't do. I'm hitting pause
-# on this for a while.
-#RUN curl https://pyenv.run | bash && \
-#    pip3 install -U pyvisa pypi pipenv && \
-#    git clone https://github.com/rdpoor/rigol-grab.git && \
-#    cd rigol-grab && \
-#    pipenv install && \    
-#    echo "Done installing rigol-grab"
-#COPY rigol-grab.sh /app
+# As of 2024-12-21, there is bug in recent versions of setuptools and we have to install a
+# an older version for the ds1054z install to succeed.
+# Use the command 'ds1054z' to interat with o-scope
+RUN pip3 install --upgrade pip wheel pip-tools && \
+    pip install --upgrade setuptools==70.0.0 && \
+    pip3 install pypandoc pyvisa && \
+    pip3 install ds1054z
+
+# One day I will install this one too but right now it has some issues. See my Lab Notes
+# from 2024-12-21
+# RUN pip3 install rigol-ds1000z
 
 ###
 ### Container setup
