@@ -63,6 +63,14 @@ RUN pip3 install --upgrade pip wheel pip-tools && \
 # RUN pip3 install rigol-ds1000z
 
 ###
+### BusPirate
+###
+WORKDIR /app
+RUN git clone https://github.com/juhasch/pyBusPirateLite.git
+WORKDIR /app/pyBusPirateLite
+RUN python3 ./setup.py build install
+
+###
 ### Container setup
 ###
 WORKDIR /usr/local/home/
