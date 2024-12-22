@@ -12,7 +12,8 @@ services:
       - USER=${USER}
     volumes:
       - ${HOME}:${HOME}
-      - /dev/serial/by-id/usb-0403_6014-if00-port0:/dev/FT232H
+      #- /dev/serial/by-id/usb-0403_6014-if00-port0:/dev/FT232H
+      #- /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A603PJ9U-if00-port0:/dev/BusPirate
       #- /tmp/.X11-unix:/tmp/.X11-unix
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro

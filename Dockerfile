@@ -9,7 +9,8 @@ RUN apt update && \
         python3-venv \
         libusb-dev \
         libusb-1.0-0 \
-        unzip
+        unzip \
+        picocom
                 
 # Install the Adafruit Blinka library so I can use the FT232H.
 # This has to be installed with pip and to avoid polluting the
