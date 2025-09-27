@@ -7,6 +7,8 @@ services:
     build: .
     privileged: true
     working_dir: ${HOME}
+    ports:
+      - "65432:65432"
     environment:
       - DISPLAY=${DISPLAY}
       - USER=${USER}
